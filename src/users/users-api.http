@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Find a user by id
-GET http://localhost:3000/auth/1
+GET http://localhost:3000/auth/50
 
 ### Find users by email
 GET http://localhost:3000/auth/?email=gez@iel.com
