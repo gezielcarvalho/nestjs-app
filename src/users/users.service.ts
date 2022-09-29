@@ -60,6 +60,5 @@ export class UsersService {
             throw new Error('User not found');
         }
         return this.repo.remove(user);
-
     }
 }
