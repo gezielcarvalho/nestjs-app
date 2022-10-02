@@ -11,10 +11,10 @@ import { plainToClass } from 'class-transformer';
 export class SerializerInterceptor implements NestInterceptor {
 
     intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
-        console.log('I\'m running before the handler', context);
+        console.log('(1) I\'m running before the handler', context);
         return next.handle().pipe(
             map((data: any) => {
-                console.log('I\'m running before response is sent out', data);
+                console.log('(3) I\'m running before response is sent out', data);
             })
         )
     }
