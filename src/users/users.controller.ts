@@ -9,12 +9,12 @@ import {
     Patch, 
     NotFoundException, 
     UseInterceptors, 
-    ClassSerializerInterceptor 
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 import { SerializerInterceptor } from '../interceptors/serialize.interceptor';
+import { UserDto } from './dtos/user.dto';
 
 @Controller('auth')
 export class UsersController {
@@ -32,7 +32,7 @@ export class UsersController {
     /**
      * findUser
      */
-    @UseInterceptors(SerializerInterceptor)
+    @UseInterceptors(new SerializerInterceptor(UserDto))
     @Get('/:id')
     public async findUser(@Param('id') id: string) {
         console.log('(2) Handler is running');
