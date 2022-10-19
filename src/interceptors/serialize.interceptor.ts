@@ -1,11 +1,16 @@
 import {
     NestInterceptor,
     ExecutionContext,
-    CallHandler
+    CallHandler,
+    UseInterceptors
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+export function Serialize(dto: any) {
+    return UseInterceptors(new SerializerInterceptor(dto));
+}
 
 export class SerializerInterceptor implements NestInterceptor {
 
