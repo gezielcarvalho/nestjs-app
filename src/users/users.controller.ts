@@ -14,19 +14,21 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
+import { AuthService } from './auth.service';
 
 @Serialize(UserDto)
 @Controller('auth')
 export class UsersController {
     constructor(
-        private service: UsersService
+        private service: UsersService,
+        private authService: AuthService
     ){}
     /**
      * createUser
      */
     @Post('/signup')
     public createUser(@Body() body: CreateUserDto) {
-        this.service.create(body.email, body.password);
+        return this.authService.signup(body.email, body.password);
     }
 
     /**
@@ -34,7 +36,6 @@ export class UsersController {
      */
     @Get('/:id')
     public async findUser(@Param('id') id: string) {
-        console.log('(2) Handler is running');
         const user = await this.service.findOne(parseInt(id));
         if (!user) {
             throw new NotFoundException('User not found!');
