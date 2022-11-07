@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "teste005@iel.com",
-    "password": "123456abc#",
+    "email": "teste008@iel.com",
+    "password": "123458abc#",
     "bogus": "bogus"
 }
 
@@ -15,6 +15,15 @@ Content-Type: application/json
 {
     "email": "teste005@iel.com",
     "password": "123456abc#"
+}
+
+### Sign in with an existing user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "teste007@iel.com",
+    "password": "123457abc#"
 }
 
 ### Set a color in session
