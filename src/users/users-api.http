@@ -17,6 +17,14 @@ Content-Type: application/json
     "password": "123456abc#"
 }
 
+### Set a color in session
+GET http://localhost:3000/auth/colors/red
+
+### Get a color from session
+GET http://localhost:3000/auth/colors
+
+
+
 ### Find a user by id
 GET http://localhost:3000/auth/1
 

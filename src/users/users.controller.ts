@@ -8,6 +8,7 @@ import {
     Query, 
     Patch, 
     NotFoundException, 
+    Session
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -39,6 +40,16 @@ export class UsersController {
     /**
      * findUser
      */
+    @Get('/colors/:color')
+    setColor(@Param('color') color: string, @Session() session: any ) {
+        session.color = color;
+    }
+
+    @Get('/colors')
+    getColor(@Session() session: any) {
+        return session.color;
+    }
+
     @Get('/:id')
     public async findUser(@Param('id') id: string) {
         const user = await this.service.findOne(parseInt(id));
