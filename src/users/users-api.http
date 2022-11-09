@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "teste005@iel.com",
-    "password": "123456abc#",
+    "email": "teste008@iel.com",
+    "password": "123458abc#",
     "bogus": "bogus"
 }
 
@@ -16,6 +16,30 @@ Content-Type: application/json
     "email": "teste005@iel.com",
     "password": "123456abc#"
 }
+
+### Sign out
+POST http://localhost:3000/auth/signout
+Content-Type: application/json
+
+### Sign in with an existing user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "teste007@iel.com",
+    "password": "123457abc#"
+}
+
+### Get current user
+GET http://localhost:3000/auth/whoami
+
+### Set a color in session
+GET http://localhost:3000/auth/colors/red
+
+### Get a color from session
+GET http://localhost:3000/auth/colors
+
+
 
 ### Find a user by id
 GET http://localhost:3000/auth/1
