@@ -17,6 +17,10 @@ Content-Type: application/json
     "password": "123456abc#"
 }
 
+### Sign out
+POST http://localhost:3000/auth/signout
+Content-Type: application/json
+
 ### Sign in with an existing user
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
@@ -25,6 +29,9 @@ Content-Type: application/json
     "email": "teste007@iel.com",
     "password": "123457abc#"
 }
+
+### Get current user
+GET http://localhost:3000/auth/whoami
 
 ### Set a color in session
 GET http://localhost:3000/auth/colors/red
