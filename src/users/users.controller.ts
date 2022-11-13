@@ -16,6 +16,8 @@ import { UsersService } from './users.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
+import { User } from './user.entity';
+import { CurrentUser } from './decorators/current-user.decorator';
 
 @Serialize(UserDto)
 @Controller('auth')
@@ -34,9 +36,16 @@ export class UsersController {
         return user;
     }
 
+    // TODO: check alternate way calling 
+    // usersService to get user info instead of decorator and interceptor
+    // @Get('/whoami')
+    // whoAmI(@Session() session: any) {
+    //     return this.service.findOne(session.userId);
+    // }
+
     @Get('/whoami')
-    whoAmI(@Session() session: any) {
-        return this.service.findOne(session.userId);
+    whoAmI(@CurrentUser() user: User) {
+        return user;
     }
 
     @Post('/signout')
