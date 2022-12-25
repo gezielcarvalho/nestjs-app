@@ -11,10 +11,10 @@ describe('AuthService', () => {
         // Mock UsersService
         const mockUsersService: Partial<UsersService> = {
             find: () => Promise.resolve([]),
-            create: () => Promise.resolve({
+            create: (email: string, password: string) => Promise.resolve({
                 id: 1,
-                email: 'test@test.com',
-                password: '123456'
+                email,
+                password
             } as User),
         }
 
@@ -35,5 +35,13 @@ describe('AuthService', () => {
     it('can create an instance of auth service', async () => {
         expect(service).toBeDefined();
     });
+
+    it('creates a new user with salted and hashed password', async () => {
+        const user = await service.signup('some@email','somepassword');
+        expect(user.password).not.toEqual('somepassword');
+        const [salt,hash] = user.password.split('.');
+        expect(salt).toBeDefined();  
+        expect(hash).toBeDefined(); 
+    })
 });
 
