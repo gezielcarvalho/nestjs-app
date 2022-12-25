@@ -1,6 +1,7 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://sabresoftware.com.br/" target="blank">![logo_sabre_transparente](https://user-images.githubusercontent.com/16593463/209469380-8124ba8d-79bf-419a-a157-79d2f6678621.png)</a>
 </p>
+
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
