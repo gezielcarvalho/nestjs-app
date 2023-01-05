@@ -8,7 +8,8 @@ import {
     Query, 
     Patch, 
     NotFoundException, 
-    Session
+    Session,
+    UseGuards
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -16,6 +17,8 @@ import { UsersService } from './users.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
+import { AuthGuard } from 'src/interceptors/auth.guard';
+
 
 @Serialize(UserDto)
 @Controller('auth')
@@ -35,6 +38,7 @@ export class UsersController {
     }
 
     @Get('/whoami')
+    @UseGuards(AuthGuard)
     whoAmI(@Session() session: any) {
         return this.service.findOne(session.userId);
     }

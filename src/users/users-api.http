@@ -13,8 +13,8 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "teste005@iel.com",
-    "password": "123456abc#"
+    "email": "teste008@iel.com",
+    "password": "123458abc#"
 }
 
 ### Sign out
